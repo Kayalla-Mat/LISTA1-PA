@@ -1,0 +1,24 @@
+1. Seja o seguinte trecho de programa:
+
+int i=3,j=5;
+int *p, *q;
+p = &i;
+q = &j;
+1
+
+Determine o valor das seguintes expressões: 
+a) p == &i;
+b) *p - *q;
+c) **&p;
+d) 3 - *p/(*q) + 7;
+
+*Resposta:
+
+a) p==&i // Verifica a condição; VERDADE= 1
+
+b)*p-*q; //SAÍDA= -2
+
+c)**&p; //SAÍDA=i, LOGO O VALOR É 3
+
+d) 3-(*p/*q)+7 // (*p/*q ) PRIMEIRA PARTE FAZEMOS A DIVISÃO, COMO SE TRATA DE NÚMEROS INTEIROS A SAÍDA DE (3/5)=0.6 , CONSIDERAMOS O VALOR 0 
+//E POR FINAL FAZEMOS A SOMA DE 3-0+7, E OBTEMOS A SAÍDA IGUAL A 10.

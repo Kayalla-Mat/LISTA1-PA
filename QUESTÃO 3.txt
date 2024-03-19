@@ -1,0 +1,21 @@
+Se i e j são variáveis inteiras e p e q ponteiros para int, quais das seguintes expressões de atribuição são ilegais? Justifique
+
+ p = &i;
+ *q = &j;
+ p = &*&i;
+ i = (*&)j;
+ i = *&j;
+ i = *&*&j;
+ q = *p;
+ i = (*p)++ + *q;
+
+RESPOSTA
+
+PRIMEIRA SAÍDA ESTÁ CERTA.
+SEGUNDA DÁ ERRO.
+TERCEIRA SAÍDA ESTÁ CERTA.
+QUARTA SAÍDA DÁ ERRO POR CAUSA DO PARENTESE SEPARANDO O SIMBOLO DE PONTEIRO E ENDEREÇO DE MEMÓRIA.
+QUINTA SAÍDA ESTÁ CERTA.
+SEXTA SAÍDA CERTA.
+SETIMA SAÍDA ESTÁ ERRADA PORQUÊ O q TEM QUE RECEBER UM ENDEREÇO DE MEMÓRIA. 
+OITAVA SAÍDA ESTÁ CORRETA.
