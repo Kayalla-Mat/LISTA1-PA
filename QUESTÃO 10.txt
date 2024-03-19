@@ -1,0 +1,11 @@
+Qual será a saída do seguinte programa
+
+ #include 
+ void main(){
+ int const *x = 3;
+ printf("%d", ++(*x));}
+
+ RESPOSTA
+
+
+NÃO COMPILA DEVIDO O PRÉ OPERADOR DE SOMA TENTANDO MUDAR O VALOR DE UMA CONSTANTE.

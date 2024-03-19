@@ -1,0 +1,26 @@
+Qual será a saída do seguinte programa
+
+#include 
+ struct teste{
+ int x = 3;
+ char nome[] = "jose";
+ };
+ main(){
+ struct teste *s; printf( "%d", s->x);
+ printf("%s", s->name);
+ }
+RESPOSTA
+ 
+RETORNA ERRO (main.c:13:8: error: expected ‘:’, ‘,’, ‘;’, ‘}’ or ‘__attribute__’ before ‘=’ token
+   13 |  int x = 3;
+      |        ^
+main.c:16:2: warning: return type defaults to ‘int’ [-Wimplicit-int]
+   16 |  main(){
+      |  ^~~~
+main.c: In function ‘main’:
+main.c:18:16: error: ‘struct teste’ has no member named ‘x’
+   18 |  printf("%d", s->x);
+      |                ^~
+main.c:19:16: error: ‘struct teste’ has no member named ‘name’
+   19 |  printf("%s", s->name);
+      |                ^~) O C NÃO PERMITE QUE DECLARE STRUCT COM VALORES FIXO DENTRO DELA.

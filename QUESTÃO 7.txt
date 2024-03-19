@@ -1,0 +1,12 @@
+Considerando a declaração
+
+ int mat[4], *p, x;
+ quais das seguintes expressões são válidas? Justifique.
+ p = mat + 1;
+ p = mat;
+ p = mat;
+ x = (*mat);
+
+RESPOSTA
+
+TODAS AS SAÍDAS SÃO VALIDAS PORQUÊ P ESTÁ RECEBENDO UM ENDEREÇO DE MEMÓRIA MAT E X ESTÁ RECEBENDO O VALOR DO PRIMEIRO ELEMENTO DE MAT.
