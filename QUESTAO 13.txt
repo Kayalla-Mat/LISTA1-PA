@@ -1,0 +1,46 @@
+O que é memory leak? Procure 3 exemplos de programas em C que apresentem memory leak e explique o que acontece em cada um deles.
+
+RESPOSTA 
+
+MEMORY LEAK É QUANDO ALOCAMOS MEMÓRIA DINAMICAMENTE E ESQUECEMOS DE LIBERAR E FICA ACUMULANDO GASTO DE MEMÓRIA.
+ 
+NESTE EXEMPLO A MEMÓRIA ALOCADA COM O MALLOC NÃO É LIBERADA USANDO O FREE,M RESULTANDO EM MEMORY LEAK.
+
+ #include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int* ptr = (int*)malloc(sizeof(int));
+    // Faça algo com ptr...
+    // Ops! Esqueci de liberar a memória.
+    return 0;
+}
+
+ NESTE EXEMPLO A MEMÓORIA NÃO NÉ LIBERADA ANTES DE SER FEITA A NOVA ALOCAÇÃO.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int* ptr = (int*)malloc(sizeof(int));
+    // Faça algo com ptr...
+    ptr = (int*)malloc(sizeof(int)); // Sobrescreva ptr sem liberar
+    // Ops! A memória original está perdida.
+    return 0;
+}
+
+
+NESTE EXEMPLO UM REFERENCIA OUTRO FAZENDO FICAR EM LOOP 
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int main() {
+    struct Node* node1 = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* node2 = (struct Node*)malloc(sizeof(struct Node));
+    node1->next = node2;
+    node2->next = node1; // Referência circular
+    // Ops! Nem node1 nem node2 podem ser completamente liberados.
+    return 0;
+}
