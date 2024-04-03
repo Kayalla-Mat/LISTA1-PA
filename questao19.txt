@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+void soma_vetores(int vetor1[], int vetor2[], int resultado[], int tamanho) {
+    for (int i = 0; i < tamanho; i++) {
+        resultado[i] = vetor1[i] + vetor2[i];
+    }
+}
+
+int main() {
+    int tamanho;
+
+    printf("Digite o tamanho dos vetores: ");
+    scanf("%d", &tamanho);
+
+    int vetor1[tamanho];
+    int vetor2[tamanho];
+    int resultado[tamanho];
+
+    printf("Digite os elementos do primeiro vetor:\n");
+    for (int i = 0; i < tamanho; i++) {
+        printf("Elemento %d: ", i + 1);
+        scanf("%d", &vetor1[i]);
+    }
+
+    printf("Digite os elementos do segundo vetor:\n");
+    for (int i = 0; i < tamanho; i++) {
+        printf("Elemento %d: ", i + 1);
+        scanf("%d", &vetor2[i]);
+    }
+
+    soma_vetores(vetor1, vetor2, resultado, tamanho);
+
+    printf("Vetor resultado da soma:\n");
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d ", resultado[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+
+Esta função soma_vetores recebe os dois vetores a serem somados (vetor1 e vetor2), o vetor onde o resultado será armazenado (resultado) e o tamanho dos vetores. Em seguida, itera sobre os elementos dos vetores, somando os elementos correspondentes e armazenando o resultado no vetor resultado.
+
+No main(), o usuário fornece o tamanho dos vetores e os elementos dos vetores são digitados pelo usuário. Em seguida, a função soma_vetores é chamada e o vetor resultado é exibido na tela.
