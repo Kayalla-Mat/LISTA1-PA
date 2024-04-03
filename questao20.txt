@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Função para multiplicação de matrizes
+void multiplicarMatrizes(float **A, float **B, float **C, int linhas_A, int colunas_A, int colunas_B) {
+    for (int i = 0; i < linhas_A; i++) {
+        for (int j = 0; j < colunas_B; j++) {
+            C[i][j] = 0;
+            for (int k = 0; k < colunas_A; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+}
+
+// Função para imprimir uma matriz
+void imprimirMatriz(float **matriz, int linhas, int colunas) {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            printf("%.2f ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int linhas_A, colunas_A, colunas_B;
+    
+    printf("Digite o número de linhas e colunas de A: ");
+    scanf("%d %d", &linhas_A, &colunas_A);
+
+    printf("Digite o número de colunas de B: ");
+    scanf("%d", &colunas_B);
+
+    // Alocação dinâmica de memória para as matrizes A, B e C
+    float **A = (float **)malloc(linhas_A * sizeof(float *));
+    float **B = (float **)malloc(colunas_A * sizeof(float *));
+    float **C = (float **)malloc(linhas_A * sizeof(float *));
+    
+    for (int i = 0; i < linhas_A; i++) {
+        A[i] = (float *)malloc(colunas_A * sizeof(float));
+        C[i] = (float *)malloc(colunas_B * sizeof(float));
+    }
+    
+    for (int i = 0; i < colunas_A; i++) {
+        B[i] = (float *)malloc(colunas_B * sizeof(float));
+    }
+
+    printf("Digite os elementos da matriz A:\n");
+    for (int i = 0; i < linhas_A; i++) {
+        for (int j = 0; j < colunas_A; j++) {
+            scanf("%f", &A[i][j]);
+        }
+    }
+
+    printf("Digite os elementos da matriz B:\n");
+    for (int i = 0; i < colunas_A; i++) {
+        for (int j = 0; j < colunas_B; j++) {
+            scanf("%f", &B[i][j]);
+        }
+    }
+
+    // Chama a função para multiplicar as matrizes A e B
+    multiplicarMatrizes(A, B, C, linhas_A, colunas_A, colunas_B);
+
+    // Imprime as matrizes A, B e C
+    printf("Matriz A:\n");
+    imprimirMatriz(A, linhas_A, colunas_A);
+
+    printf("Matriz B:\n");
+    imprimirMatriz(B, colunas_A, colunas_B);
+
+    printf("Resultado da multiplicação (Matriz C):\n");
+    imprimirMatriz(C, linhas_A, colunas_B);
+
+    // Liberando a memória alocada
+    for (int i = 0; i < linhas_A; i++) {
+        free(A[i]);
+        free(C[i]);
+    }
+    for (int i = 0; i < colunas_A; i++) {
+        free(B[i]);
+    }
+    free(A);
+    free(B);
+    free(C);
+
+    return 0;
+}
