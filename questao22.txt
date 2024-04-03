@@ -1,0 +1,1 @@
+As saídas são 15, 13 e 0.
