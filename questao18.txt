@@ -1,0 +1,1 @@
+O código da questão 15 utiliza o tipo de ordenação BubbleSort que no pior caso tem um tempo de execução pior que o da função qsort que utiliza o método de ordenação QuickSort.
