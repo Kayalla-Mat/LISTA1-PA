@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Criação do tipo de dado para criar o ponteiro da função
+typedef int func();
+
+// Função para comparar
+int compare(int a, int b){
+    if (a > b) {
+        return 1;
+    }
+    else{
+        return -1;
+    }
+}
+
+// Função para ler os valores e apresentá-los em ordem crescente
+void ordenarValores(int *valores, int n, func *ptr) {
+    // Algoritmo de ordenação: Bubble Sort
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if((*ptr)(valores[j], valores[j+1]) == 1){
+                int temp = valores[j];
+                valores[j] = valores[j + 1];
+                valores[j + 1] = temp;
+            }
+        }
+    }
+
+    printf("Valores em ordem crescente:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%i", valores[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int n;
+    int *valores;
+    func *ptr;
+    ptr = compare;
+
+    printf("Quantos valores deseja inserir? ");
+    scanf("%d", &n);
+
+    // Alocação dinâmica de memória para o array de valores
+    valores = (int *)malloc(n * sizeof(int));
+    if (valores == NULL) {
+        printf("Erro de alocação de memória!\n");
+        return 1;
+    }
+
+    printf("Digite %d valores:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%i", &valores[i]);
+    }
+
+    // Chama a função para ordenar os valores e apresentá-los
+    ordenarValores(valores, n, *ptr);
+
+    // Liberando a memória alocada
+    free(valores);
+
+    return 0;
+}
