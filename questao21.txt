@@ -1,0 +1,1 @@
+É a alternativa C por que não se tem a certeza de que o ponteiro vai ser liberado por causa do return antes do free.
