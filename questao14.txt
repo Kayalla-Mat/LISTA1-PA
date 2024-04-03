@@ -1,0 +1,18 @@
+O ponteiro para funções em C serve para definir qual função vai ser executada sem precisar chamar pelo nome dela de forma explicita no código.
+
+#include <stdio.h>
+
+typedef int TIPOFuncaoSemParametros(); //declaração um tipo de dado que permite criar um ponteiro para uma função que retorna um inteiro
+
+int teste(){ // função
+    printf("teste");
+}
+
+int main()
+{
+    TIPOFuncaoSemParametros *ptr; // declaração do ponteiro que vai receber o endereço da função
+    ptr = teste; //atribuição do endereço da função pra ponteiro
+    (*ptr)(); //chamada da função usando o ponteiro
+
+    return 0;
+}
