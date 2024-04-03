@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Função para comparar dois floats para uso no qsort
+int compare(const void *a, const void *b) {
+    float fa = *((const float *)a);
+    float fb = *((const float *)b);
+    if (fa > fb) return 1;
+    if (fa < fb) return -1;
+    return 0;
+}
+
+// Função para ler os valores e ordená-los em ordem crescente
+void lerValoresOrdenar(float *valores, int n) {
+    int i;
+    printf("Digite %d valores:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%f", &valores[i]);
+    }
+
+    // Ordenando os valores utilizando a função qsort da biblioteca padrão
+    qsort(valores, n, sizeof(float), compare);
+}
+
+int main() {
+    int n;
+    float *valores;
+
+    printf("Quantos valores deseja inserir? ");
+    scanf("%d", &n);
+
+    // Alocação dinâmica de memória para o array de valores
+    valores = (float *)malloc(n * sizeof(float));
+    if (valores == NULL) {
+        printf("Erro de alocação de memória!\n");
+        return 1;
+    }
+
+    // Chama a função para ler os valores e ordená-los
+    lerValoresOrdenar(valores, n);
+
+    printf("Valores em ordem crescente:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%.2f ", valores[i]);
+    }
+    printf("\n");
+
+    // Liberando a memória alocada
+    free(valores);
+
+    return 0;
+}
